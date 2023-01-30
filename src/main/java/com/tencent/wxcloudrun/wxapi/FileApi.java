@@ -19,7 +19,7 @@ public class FileApi {
     public static String getFileUrl(String fileId) {
         FileInfo fileInfo = new FileInfo();
         fileInfo.setFileid(fileId);
-        fileInfo.setMax_age(300);
+        fileInfo.setMax_age(7200);
         List<FileInfo> fileInfoList = new ArrayList<>();
         fileInfoList.add(fileInfo);
         Map<String,Object> postParams = new HashMap();

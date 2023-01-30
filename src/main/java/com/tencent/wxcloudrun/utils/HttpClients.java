@@ -122,6 +122,7 @@ public class HttpClients {
                 body = new FormBody.Builder()
                         .add(entry.getKey(), entry.getValue().toString());
             }
+            System.out.println(body.toString());
 
             //******** 二、创建 request 对象 ************
 
