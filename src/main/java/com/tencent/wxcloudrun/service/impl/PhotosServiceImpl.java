@@ -33,7 +33,7 @@ public class PhotosServiceImpl implements PhotosService {
                 .post(requestBody)
                 .build();
         Response response = okHttpClient.newCall(request).execute();
-        System.out.println("佐糖照片修复后返回信息："+response.body());
+        System.out.println("佐糖照片修复后返回信息："+response.body().string());
         String result = response.body().string();
         Gson gson = new Gson();
         ZtApiResponse<RefurbishmentResult> refurbishmentResult = gson.fromJson(result,new TypeToken<ZtApiResponse<RefurbishmentResult>>(){}.getType());

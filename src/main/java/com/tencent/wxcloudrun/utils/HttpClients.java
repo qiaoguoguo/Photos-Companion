@@ -1,6 +1,7 @@
 package com.tencent.wxcloudrun.utils;
 
 import okhttp3.*;
+import org.springframework.boot.configurationprocessor.json.JSONObject;
 
 import java.io.IOException;
 import java.net.SocketTimeoutException;
@@ -117,18 +118,16 @@ public class HttpClients {
             StringBuffer stringB = new StringBuffer();
             stringB.append(url);
             stringB.append(path);
-            FormBody.Builder body = new FormBody.Builder();
+            JSONObject paramObject = new JSONObject();
             for(Map.Entry<String,Object> entry : mapParams.entrySet()){
-                body = new FormBody.Builder()
-                        .add(entry.getKey(), entry.getValue().toString());
+                paramObject.put(entry.getKey(), entry.getValue());
             }
-            System.out.println(body.toString());
 
             //******** 二、创建 request 对象 ************
 
             Request request = new Request.Builder()
                     .url(stringB.toString())
-                    .post(body.build())
+                    .post(okhttp3.RequestBody.create(MediaType.parse("application/json; charset=utf-8"), paramObject.toString()))
                     .build();
             //******** 三、执行请求 ********************
             response = httpClient.newCall(request).execute();
