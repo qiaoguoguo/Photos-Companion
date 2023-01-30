@@ -24,7 +24,7 @@ public class PhotosController {
     private PhotosService photosService;
 
     /**
-     * 获取当前计数
+     * 老照片修复
      * @return API response json
      */
     @GetMapping(value = "/photos/refurbishment")
@@ -33,4 +33,10 @@ public class PhotosController {
         RefurbishmentResult refurbishmentResult = photosService.RefurbishmentPhotos();
         return ApiResponse.ok(refurbishmentResult);
     }
+
+    /**
+     * 模糊照片修复
+     * @return API response json
+     */
+
 }
