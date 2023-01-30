@@ -12,11 +12,7 @@ import java.util.List;
 @Service
 public class CounterServiceImpl implements CounterService {
 
-  final CountersMapper countersMapper;
-
-  public CounterServiceImpl(@Autowired CountersMapper countersMapper) {
-    this.countersMapper = countersMapper;
-  }
+  @Autowired CountersMapper countersMapper;
 
   @Override
   public Optional<Counter> getCounter(Integer id) {
