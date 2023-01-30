@@ -38,11 +38,6 @@ public class PhotosController {
      * 模糊照片修复
      * @return API response json
      */
-    @GetMapping(value = "/photos/refurbishment1")
-    ApiResponse get1() throws IOException {
-        log.info("调用照片修复接口");
-        RefurbishmentResult refurbishmentResult = photosService.RefurbishmentPhotos1();
-        return ApiResponse.ok(refurbishmentResult);
-    }
+    
 
 }

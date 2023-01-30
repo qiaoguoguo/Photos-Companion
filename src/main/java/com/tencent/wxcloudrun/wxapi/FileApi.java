@@ -14,7 +14,6 @@ import java.util.Map;
 /**
  * 微信开放接口服务-文件管理相关方法
  */
-@Data
 public class FileApi {
 
     public static String getFileUrl(String fileId) {
@@ -23,7 +22,7 @@ public class FileApi {
         fileInfo.setMax_age(300);
         List<FileInfo> fileInfoList = new ArrayList<>();
         fileInfoList.add(fileInfo);
-        Map postParams = new HashMap();
+        Map<String,Object> postParams = new HashMap();
         postParams.put("env","prod-0grz6agt43c4b51b");
         postParams.put("file_list",fileInfoList);
         String result = HttpClients.doPost("https://api.weixin.qq.com", "/tcb/batchdownloadfile", postParams);

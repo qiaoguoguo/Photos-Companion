@@ -147,6 +147,7 @@ public class HttpClients {
             System.out.println("executeHttpRequest IOException, e: " + e);
         } catch (Exception e) {
             // 其他异常
+            System.out.println("请求异常");
             e.printStackTrace();
         } finally {
             if (response != null) {
