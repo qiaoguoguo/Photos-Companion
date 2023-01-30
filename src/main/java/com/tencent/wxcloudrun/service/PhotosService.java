@@ -12,4 +12,5 @@ public interface PhotosService {
 
     //照片翻新
     RefurbishmentResult RefurbishmentPhotos() throws IOException;
+    RefurbishmentResult RefurbishmentPhotos1() throws IOException;
 }
