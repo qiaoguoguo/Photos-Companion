@@ -1,0 +1,26 @@
+server:
+  port: 7868
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://${MYSQL_ADDRESS}/${MYSQL_DATABASE:springboot_demo}
+    username: ${MYSQL_USERNAME}
+    password: ${MySQL_PASSWORD}
+  mvc:
+    view:
+      suffix: .html
+      prefix: /
+
+mybatis:
+  mapper-locations: classpath*:mapper/*Mapper.xml
+
+
+api:
+  wx:
+    env: "prod-0grz6agt43c4b51b"
+    url: "https://api.weixin.qq.com"
+    downloadfile: "/tcb/batchdownloadfile"
+  zt:
+    key: "wxr88le5ucb8bfoh2"
+    scale: "https://techsz.aoscdn.com/api/tasks/visual/scale"
