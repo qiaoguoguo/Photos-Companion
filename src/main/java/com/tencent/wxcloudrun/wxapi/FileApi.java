@@ -1,6 +1,8 @@
 package com.tencent.wxcloudrun.wxapi;
 
+import com.google.gson.Gson;
 import com.tencent.wxcloudrun.model.FileInfo;
+import com.tencent.wxcloudrun.model.FileInfoRequest;
 import com.tencent.wxcloudrun.utils.HttpClients;
 import lombok.Data;
 import okhttp3.*;
@@ -22,10 +24,12 @@ public class FileApi {
         fileInfo.setMax_age(7200);
         List<FileInfo> fileInfoList = new ArrayList<>();
         fileInfoList.add(fileInfo);
-        Map<String,Object> postParams = new HashMap();
-        postParams.put("env","prod-0grz6agt43c4b51b");
-        postParams.put("file_list",fileInfoList);
-        String result = HttpClients.doPost("https://api.weixin.qq.com", "/tcb/batchdownloadfile", postParams);
+        FileInfoRequest fileInfoRequest = new FileInfoRequest();
+        fileInfoRequest.setEnv("prod-0grz6agt43c4b51b");
+        fileInfoRequest.setFile_list(fileInfoList);
+        Gson gson = new Gson();
+        String requestBody = gson.toJson(fileInfoRequest);
+        String result = HttpClients.doPost("https://api.weixin.qq.com", "/tcb/batchdownloadfile", requestBody);
         return result;
     }
 

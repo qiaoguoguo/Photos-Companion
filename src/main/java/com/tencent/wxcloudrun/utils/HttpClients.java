@@ -1,14 +1,13 @@
 package com.tencent.wxcloudrun.utils;
 
+import com.google.gson.Gson;
 import okhttp3.*;
 import org.springframework.boot.configurationprocessor.json.JSONObject;
 
 import java.io.IOException;
 import java.net.SocketTimeoutException;
 import java.net.URLEncoder;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 public class HttpClients {
@@ -103,7 +102,7 @@ public class HttpClients {
         return resultString;
     }
 
-    public static String doPost(String url, String path, Map<String, Object> mapParams){
+    public static String doPost(String url, String path, String param){
 
         Response response = null;
         String resultString = "";
@@ -118,16 +117,12 @@ public class HttpClients {
             StringBuffer stringB = new StringBuffer();
             stringB.append(url);
             stringB.append(path);
-            JSONObject paramObject = new JSONObject();
-            for(Map.Entry<String,Object> entry : mapParams.entrySet()){
-                paramObject.put(entry.getKey(), entry.getValue());
-            }
 
             //******** 二、创建 request 对象 ************
 
             Request request = new Request.Builder()
                     .url(stringB.toString())
-                    .post(okhttp3.RequestBody.create(MediaType.parse("application/json; charset=utf-8"), paramObject.toString()))
+                    .post(okhttp3.RequestBody.create(MediaType.parse("application/json; charset=utf-8"), param))
                     .build();
             //******** 三、执行请求 ********************
             response = httpClient.newCall(request).execute();
@@ -185,15 +180,4 @@ public class HttpClients {
         return strParams.toString();
     }
 
-    public static void main(String[] args){
-        Map<String, Object> getParams = new HashMap<>();
-
-        Map<String, Object> postParams = new HashMap<>();
-        getParams.put("word", "%E4%BD%A0%E5%A5%BD");
-        postParams.put("url","/search");
-        String result1 = doGet("http://wenku.baidu.com", "/search/interface/getrelatequery", getParams);
-        System.out.println(result1);
-        String result2 = doPost("http://wenku.baidu.com", "/message/getnotice", postParams);
-        System.out.println(result2);
-    }
 }

@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class FileInfo {
 
-    String fileid;
-    Integer max_age;
+    private String fileid;
+    private Integer max_age;
 
 }
