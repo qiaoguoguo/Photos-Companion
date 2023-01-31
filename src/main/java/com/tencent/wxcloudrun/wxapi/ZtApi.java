@@ -4,8 +4,10 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.tencent.wxcloudrun.config.ZtApiResponse;
 import com.tencent.wxcloudrun.model.RefurbishmentResult;
+import lombok.Data;
 import okhttp3.*;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import java.io.IOException;
@@ -13,6 +15,8 @@ import java.io.IOException;
 /**
  * 佐糖API接口
  */
+@Data
+@Component
 public class ZtApi {
 
     @Value("${api.zt.key}")
