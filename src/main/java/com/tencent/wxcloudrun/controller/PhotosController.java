@@ -44,7 +44,7 @@ public class PhotosController {
         Gson gson = new Gson();
         ZtApiResponse<RefurbishmentResult> refurbishmentResult = gson.fromJson(result,new TypeToken<ZtApiResponse<RefurbishmentResult>>(){}.getType());
         System.out.println("aaaa"+refurbishmentResult.toString());
-        return null;
+        return ApiResponse.ok(refurbishmentResult);
     }
 
 
