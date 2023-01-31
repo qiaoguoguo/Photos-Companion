@@ -27,6 +27,7 @@ public class ZtApi {
      * @return
      */
     public static ZtApiResponse<RefurbishmentResult> RefurbishmentPhotos(String fileUrl,String type,String fixFaceOnly){
+        System.out.println("参数："+key+scale);
         Gson gson = new Gson();
         OkHttpClient okHttpClient = new OkHttpClient.Builder().build();
         RequestBody requestBody = new MultipartBody.Builder()

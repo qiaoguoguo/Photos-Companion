@@ -120,6 +120,7 @@ public class HttpClients {
             StringBuffer stringB = new StringBuffer();
             stringB.append(url);
             stringB.append(path);
+            System.out.println("请求地址："+stringB.toString());
 
             //******** 二、创建 request 对象 ************
 

@@ -27,6 +27,7 @@ public class WxApi {
      * @return
      */
     public static String getFileUrl(String fileId) {
+        System.out.println("参数"+env+url+downloadfile);
         FileInfo fileInfo = new FileInfo();
         fileInfo.setFileid(fileId);
         fileInfo.setMax_age(7200);
