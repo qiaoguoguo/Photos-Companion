@@ -18,7 +18,7 @@ public class PhotosServiceImpl implements PhotosService {
 
     @Override
     public RefurbishmentResult RefurbishmentPhotos() throws IOException {
-        String url = FileApi.getFileUrl("cloud://prod-0grz6agt43c4b51b.7072-prod-0grz6agt43c4b51b-1307548922/20230129152743.jpg");
+        String url = "https://7072-prod-0grz6agt43c4b51b-1307548922.tcb.qcloud.la/20230129152743.jpg?sign=08728096846e822a1912d6ce97b310ad&t=1675132495";
         System.out.println("获取到云存储照片下载地址：" + url);
         OkHttpClient okHttpClient = new OkHttpClient.Builder().build();
         RequestBody requestBody = new MultipartBody.Builder()
