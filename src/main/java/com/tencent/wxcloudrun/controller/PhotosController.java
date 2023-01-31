@@ -43,6 +43,7 @@ public class PhotosController {
         String result = "{\"status\":200,\"data\":{\"completed_at\":1675135406,\"created_at\":1675135403,\"image\":\"https://wxtechsz.oss-cn-shenzhen.aliyuncs.com/tasks/output/scale/5f7eb9f1-2613-40d3-94af-b9978c417430.jpg?Expires=1675139006\\u0026OSSAccessKeyId=LTAI5tGjJnh66c1txANiRBQN\\u0026Signature=siZwnJqyH8EhRxe6/2DUy5bqat8%3D\",\"processed_at\":1675135403,\"progress\":100,\"return_type\":1,\"state\":1,\"task_id\":\"5f7eb9f1-2613-40d3-94af-b9978c417430\",\"time_elapsed\":2023.32,\"type\":\"face\"}}";
         Gson gson = new Gson();
         ZtApiResponse<RefurbishmentResult> refurbishmentResult = gson.fromJson(result,new TypeToken<ZtApiResponse<RefurbishmentResult>>(){}.getType());
+        System.out.println("aaaa"+refurbishmentResult.toString());
         return null;
     }
 
