@@ -4,10 +4,10 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.tencent.wxcloudrun.config.ZtApiResponse;
 import com.tencent.wxcloudrun.model.RefurbishmentResult;
-import lombok.extern.slf4j.Slf4j;
 import okhttp3.*;
 import org.springframework.beans.factory.annotation.Value;
 
+import javax.annotation.PostConstruct;
 import java.io.IOException;
 
 /**
@@ -16,9 +16,19 @@ import java.io.IOException;
 public class ZtApi {
 
     @Value("${api.zt.key}")
-    private static String key;
+    private String key1;
     @Value("${api.zt.scale}")
+    private String scale1;
+
+    private static String key;
     private static String scale;
+
+    @PostConstruct
+    public void init() {
+        key = key1;
+        scale = scale1;
+    }
+
     /**
      * 佐糖图片变清晰接口(同步)
      * @param fileUrl

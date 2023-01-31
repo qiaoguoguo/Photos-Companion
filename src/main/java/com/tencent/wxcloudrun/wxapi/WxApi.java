@@ -6,6 +6,7 @@ import com.tencent.wxcloudrun.model.FileInfoRequest;
 import com.tencent.wxcloudrun.utils.HttpClients;
 import org.springframework.beans.factory.annotation.Value;
 
+import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,11 +16,22 @@ import java.util.List;
 public class WxApi {
 
     @Value("${api.wx.env}")
-    private static String env;
+    private String env1;
     @Value("${api.wx.url}")
-    private static String url;
+    private String url1;
     @Value("${api.wx.downloadfile}")
+    private String downloadfile1;
+
+    private static String env;
+    private static String url;
     private static String downloadfile;
+
+    @PostConstruct
+    public void init() {
+        env = env1;
+        url = url1;
+        downloadfile = downloadfile1;
+    }
 
     /**
      * 获取文件下载地址
