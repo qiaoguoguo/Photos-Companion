@@ -2,18 +2,20 @@ package com.tencent.wxcloudrun.model;
 
 import lombok.Data;
 
-@Data
-public class RefurbishmentResult {
+import java.io.Serializable;
 
-    long completed_at;
-    long created_at;
-    String image;
-    long processed_at;
-    Integer progress;
-    Integer return_type;
-    Integer state;
-    String task_id;
-    Double time_elapsed;
-    String type;
+@Data
+public class RefurbishmentResult implements Serializable {
+
+    private long completed_at;
+    private long created_at;
+    private String image;
+    private long processed_at;
+    private Integer progress;
+    private Integer return_type;
+    private Integer state;
+    private String task_id;
+    private Double time_elapsed;
+    private String type;
 
 }
