@@ -5,7 +5,6 @@ import com.google.gson.reflect.TypeToken;
 import com.tencent.wxcloudrun.config.ZtApiResponse;
 import com.tencent.wxcloudrun.model.RefurbishmentResult;
 import com.tencent.wxcloudrun.service.PhotosService;
-import com.tencent.wxcloudrun.wxapi.FileApi;
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.*;
 import org.springframework.stereotype.Service;

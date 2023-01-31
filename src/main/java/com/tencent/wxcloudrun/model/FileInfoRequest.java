@@ -1,5 +1,6 @@
 package com.tencent.wxcloudrun.model;
 
+import com.tencent.wxcloudrun.model.FileInfo;
 import lombok.Data;
 
 import java.util.List;

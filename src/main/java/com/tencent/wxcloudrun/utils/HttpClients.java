@@ -1,6 +1,9 @@
 package com.tencent.wxcloudrun.utils;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import com.tencent.wxcloudrun.config.ZtApiResponse;
+import com.tencent.wxcloudrun.model.RefurbishmentResult;
 import okhttp3.*;
 import org.springframework.boot.configurationprocessor.json.JSONObject;
 

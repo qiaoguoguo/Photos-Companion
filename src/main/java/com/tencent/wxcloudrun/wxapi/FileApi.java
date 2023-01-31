@@ -4,14 +4,9 @@ import com.google.gson.Gson;
 import com.tencent.wxcloudrun.model.FileInfo;
 import com.tencent.wxcloudrun.model.FileInfoRequest;
 import com.tencent.wxcloudrun.utils.HttpClients;
-import lombok.Data;
-import okhttp3.*;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * 微信开放接口服务-文件管理相关方法

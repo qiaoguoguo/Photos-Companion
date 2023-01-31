@@ -1,6 +1,5 @@
 package com.tencent.wxcloudrun.config;
 
-import com.tencent.wxcloudrun.model.RefurbishmentResult;
 import lombok.Data;
 
 @Data

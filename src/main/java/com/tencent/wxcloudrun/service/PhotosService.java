@@ -2,7 +2,6 @@ package com.tencent.wxcloudrun.service;
 
 import com.tencent.wxcloudrun.model.RefurbishmentResult;
 
-import java.io.File;
 import java.io.IOException;
 
 /**
