@@ -3,8 +3,11 @@ package com.tencent.wxcloudrun.service.impl;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.tencent.wxcloudrun.config.ZtApiResponse;
+import com.tencent.wxcloudrun.model.FileDownLoadResult;
 import com.tencent.wxcloudrun.model.RefurbishmentResult;
 import com.tencent.wxcloudrun.service.PhotosService;
+import com.tencent.wxcloudrun.wxapi.WxApi;
+import com.tencent.wxcloudrun.wxapi.ZtApi;
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.*;
 import org.springframework.stereotype.Service;
@@ -15,28 +18,32 @@ import java.io.IOException;
 @Slf4j
 public class PhotosServiceImpl implements PhotosService {
 
+    /**
+     * 人脸变清晰方法
+     * @param fileId
+     * @param type
+     * @param fixFaceOnly
+     * @return
+     * @throws IOException
+     */
     @Override
-    public RefurbishmentResult RefurbishmentPhotos() throws IOException {
-        String url = "https://7072-prod-0grz6agt43c4b51b-1307548922.tcb.qcloud.la/20230129152743.jpg?sign=08728096846e822a1912d6ce97b310ad&t=1675132495";
-        System.out.println("获取到云存储照片下载地址：" + url);
-        OkHttpClient okHttpClient = new OkHttpClient.Builder().build();
-        RequestBody requestBody = new MultipartBody.Builder()
-                .setType(MultipartBody.FORM)
-                .addFormDataPart("image_url",url)
-                .addFormDataPart("type", "face")
-                .addFormDataPart("sync", "1")
-                .build();
-        Request request = new Request.Builder()
-                .url("https://techsz.aoscdn.com/api/tasks/visual/scale")
-                .addHeader("X-API-KEY", "wxr88le5ucb8bfoh2")
-                .post(requestBody)
-                .build();
-        Response response = okHttpClient.newCall(request).execute();
-        System.out.println("佐糖照片修复后返回信息："+response.body().string());
-        String result = response.body().string();
+    public String RefurbishmentPhotos(String fileId,String type,String fixFaceOnly) throws IOException {
         Gson gson = new Gson();
-        ZtApiResponse<RefurbishmentResult> refurbishmentResult = gson.fromJson(result,new TypeToken<ZtApiResponse<RefurbishmentResult>>(){}.getType());
-        return refurbishmentResult.getData();
+        String file = WxApi.getFileUrl(fileId);
+        FileDownLoadResult fileDownLoadResult = gson.fromJson(file, new TypeToken<FileDownLoadResult>() {
+        }.getType());
+        if (fileDownLoadResult.getErrcode() == 0) {
+            String url = fileDownLoadResult.getFile_list().get(0).getDownload_url();
+            ZtApiResponse<RefurbishmentResult> refurbishmentResultZtApiResponse = ZtApi.RefurbishmentPhotos(url, type, fixFaceOnly);
+            if (refurbishmentResultZtApiResponse.getStatus() == 200){
+                return refurbishmentResultZtApiResponse.getData().getImage();
+            }else {
+                log.error("调用佐糖人脸变清晰接口错误，错误码：{}",refurbishmentResultZtApiResponse.getStatus());
+                return null;
+            }
+        } else {
+            log.error("获取微信fileId:{}的文件下载地址错误，错误码：{}", fileId, fileDownLoadResult.getErrcode());
+            return null;
+        }
     }
-
 }

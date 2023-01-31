@@ -10,5 +10,5 @@ import java.io.IOException;
 public interface PhotosService {
 
     //照片翻新
-    RefurbishmentResult RefurbishmentPhotos() throws IOException;
+    String RefurbishmentPhotos(String fileId,String type,String fixFaceOnly) throws IOException;
 }
