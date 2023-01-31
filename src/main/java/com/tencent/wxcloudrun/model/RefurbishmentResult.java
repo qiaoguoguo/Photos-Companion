@@ -13,6 +13,7 @@ public class RefurbishmentResult {
     Integer return_type;
     Integer state;
     String task_id;
+    Double time_elapsed;
     String type;
 
 }
