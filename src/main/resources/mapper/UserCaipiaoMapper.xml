@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tencent.wxcloudrun.dao.UserCaipiaoMapper">
+
+    <resultMap id="userCaipiaoMapper" type="com.tencent.wxcloudrun.model.UserCaipiao">
+        <result property="type" column="type"/>
+        <result property="number" column="number"/>
+        <result property="refernumber" column="refernumber"/>
+        <result property="openid" column="openid"/>
+    </resultMap>
+
+    <select id="findByOpenidAndType" parameterType="Map" resultMap="userCaipiaoMapper">
+         select * from user_caipiao where type = #{type} and openid = #{openid}
+    </select>
+
+    <select id="findAll" resultMap="userCaipiaoMapper">
+        select * from user_caipiao
+    </select>
+
+</mapper>

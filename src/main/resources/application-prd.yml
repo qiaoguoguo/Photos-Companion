@@ -24,3 +24,5 @@ api:
   zt:
     key: ${ZTAPI_KEY}
     scale: ${SCALE}
+  cp:
+    key: ${CP_KEY}

@@ -1,3 +1,18 @@
 spring:
   profiles:
     active: prd
+
+#mybatis相关配置
+mybatis-plus:
+  type-aliases-package: com.tencent.wxcloudrun.model
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    jdbc-type-for-null: null
+  global-config:
+    banner: false
+    db-config:
+      select-strategy: not_empty
+    # config-location:
+    configuration:
+      cache-enabled: true
+      log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

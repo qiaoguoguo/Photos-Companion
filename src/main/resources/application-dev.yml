@@ -4,9 +4,9 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://${MYSQL_ADDRESS}/${MYSQL_DATABASE:springboot_demo}
-    username: ${MYSQL_USERNAME}
-    password: ${MySQL_PASSWORD}
+    url: jdbc:mysql://sh-cynosdbmysql-grp-jqc1mtsq.sql.tencentcdb.com:26113/springboot_demo
+    username: root
+    password: fXc6NwWM
   mvc:
     view:
       suffix: .html
@@ -24,3 +24,5 @@ api:
   zt:
     key: wxr88le5ucb8bfoh2
     scale: https://techsz.aoscdn.com/api/tasks/visual/scale
+  cp:
+    key: b16339409ea775ad

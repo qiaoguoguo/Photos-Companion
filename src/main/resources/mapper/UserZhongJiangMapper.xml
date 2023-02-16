@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tencent.wxcloudrun.dao.UserZhongjiangMapper">
+
+    <resultMap id="zjresult" type="com.tencent.wxcloudrun.model.UserZhongjiang">
+        <result property="openid" column="openid" javaType="java.lang.String"/>
+        <result property="type" column="type" javaType="java.lang.String"/>
+        <result property="unumber" column="unumber" javaType="java.lang.String"/>
+        <result property="urefernumber" column="urefernumber" javaType="java.lang.String"/>
+        <result property="number" column="number" javaType="java.lang.String"/>
+        <result property="refernumber" column="refernumber" javaType="java.lang.String"/>
+        <result property="issueno" column="issueno" javaType="java.lang.String"/>
+        <result property="zuhe" column="zuhe" javaType="java.lang.String"/>
+        <result property="level" column="level" javaType="java.lang.Integer"/>
+    </resultMap>
+
+    <select id="findByOpenid" parameterType="String" resultMap="zjresult">
+        select * from user_zhongjiang where openid = #{openid}
+    </select>
+
+</mapper>
