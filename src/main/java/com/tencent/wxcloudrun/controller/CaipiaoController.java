@@ -27,7 +27,7 @@ public class CaipiaoController {
      */
     @PostMapping(value = "/caipiao/addUserNum")
     ApiResponse get(@RequestBody UserCaipiao userCaipiao, HttpServletRequest request){
-        String openid = request.getHeader("openid");
+        String openid = request.getHeader("x-wx-openid");
         userCaipiao.setOpenid(openid);
         caipiaoService.sava(userCaipiao);
         return ApiResponse.ok();
@@ -39,7 +39,7 @@ public class CaipiaoController {
      */
     @PostMapping(value = "/caipiao/delNum")
     ApiResponse delNum(@RequestParam Integer id, HttpServletRequest request){
-        String openid = request.getHeader("openid");
+        String openid = request.getHeader("x-wx-openid");
         caipiaoService.deleteById(id);
         return ApiResponse.ok();
     }
@@ -50,7 +50,7 @@ public class CaipiaoController {
      */
     @GetMapping(value = "/caipiao/listNum")
     ApiResponse listNum(HttpServletRequest request){
-        String openid = request.getHeader("openid");
+        String openid = request.getHeader("x-wx-openid");
         List<UserCaipiao> caipiaos = caipiaoService.findByUser(openid,"14");
         return ApiResponse.ok(caipiaos);
     }
@@ -72,7 +72,7 @@ public class CaipiaoController {
      */
     @GetMapping(value = "/caipiao/zjList")
     ApiResponse zjList(HttpServletRequest request){
-        String openid = request.getHeader("openid");
+        String openid = request.getHeader("x-wx-openid");
         List<UserZhongjiang> byOpenid = caipiaoService.findByOpenid(openid);
         return ApiResponse.ok(byOpenid);
     }
