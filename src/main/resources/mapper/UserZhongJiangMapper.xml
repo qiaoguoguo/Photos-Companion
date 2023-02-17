@@ -15,7 +15,7 @@
     </resultMap>
 
     <select id="findByOpenid" parameterType="String" resultMap="zjresult">
-        select * from user_zhongjiang where openid = #{openid}
+        select * from user_zhongjiang where openid = #{openid} order by issueno
     </select>
 
 </mapper>

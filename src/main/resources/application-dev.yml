@@ -17,12 +17,17 @@ mybatis:
 
 
 api:
+  #微信开放接口 相关参数
   wx:
     env: prod-0grz6agt43c4b51b
     url: https://api.weixin.qq.com
     downloadfile: /tcb/batchdownloadfile
+    appId: wx7059d055d5396df1
+    appSecret: e2d5f748bb5d54a429f81029e5acb802
+  #佐糖图片API key
   zt:
     key: wxr88le5ucb8bfoh2
     scale: https://techsz.aoscdn.com/api/tasks/visual/scale
+  #彩票API key
   cp:
     key: b16339409ea775ad

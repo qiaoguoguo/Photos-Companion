@@ -2,6 +2,7 @@ package com.tencent.wxcloudrun.service.impl;
 
 import com.tencent.wxcloudrun.dao.UserCaipiaoMapper;
 import com.tencent.wxcloudrun.dao.UserZhongjiangMapper;
+import com.tencent.wxcloudrun.dto.PushDTO;
 import com.tencent.wxcloudrun.model.UserCaipiao;
 import com.tencent.wxcloudrun.model.UserZhongjiang;
 import com.tencent.wxcloudrun.service.UserCaipiaoService;
@@ -20,10 +21,18 @@ public class UserCaipiaoServiceImpl implements UserCaipiaoService {
     private UserCaipiaoMapper userCaipiaoMapper;
     @Autowired
     private UserZhongjiangMapper userZhongjiangMapper;
+    @Autowired
+    private PushBizService pushBizService;
 
     @Override
     public void sava(UserCaipiao userCaipiao) {
         userCaipiaoMapper.insert(userCaipiao);
+    }
+
+
+    @Override
+    public void deleteById(Integer id) {
+        userCaipiaoMapper.deleteById(id);
     }
 
     @Override
@@ -63,6 +72,9 @@ public class UserCaipiaoServiceImpl implements UserCaipiaoService {
             //存入中奖信息表
             if (result > 0){
                 userZhongjiangMapper.insert(zhongJiang);
+                //推送中奖消息给用户
+                PushDTO pushDTO = new PushDTO(caipiao.getOpenid(),result+"等奖，中奖组合："+zuhe);
+                pushBizService.pushOneUser(pushDTO);
             }
         }
     }

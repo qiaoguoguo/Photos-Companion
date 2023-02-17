@@ -17,12 +17,17 @@ mybatis:
 
 
 api:
+  #微信开放接口 相关参数
   wx:
     env: ${WXAPI_ENV}
     url: ${WXAPI_URL}
     downloadfile: ${WXAPI_DOWNLOADFILE}
+    appId: ${APP_ID}
+    appSecret: ${APP_SECRET}
+  #佐糖图片API key
   zt:
     key: ${ZTAPI_KEY}
     scale: ${SCALE}
+  #彩票API key
   cp:
     key: ${CP_KEY}
