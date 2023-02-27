@@ -21,7 +21,7 @@ public class CaipiaoCron {
     private UserCaipiaoService userCaipiaoService;
 
     /** 每天自动查询所有用彩票中奖情况，自动推送 */
-    @Scheduled(cron = "0 59 7 ? * 1,3,6")
+    @Scheduled(cron = "0 0 23 ? * 1,3,6")
     public void configureTasks() {
         Date date = new Date();
         System.out.println(date+"大乐透开奖");
@@ -29,7 +29,7 @@ public class CaipiaoCron {
     }
 
     /** 每天自动查询所有用彩票中奖情况，自动推送 */
-    @Scheduled(cron = "0 59 15 ? * 1,3,6")
+    @Scheduled(cron = "0 0 15 ? * 1,3,6")
     public void configureTasks1() {
         Date date = new Date();
         System.out.println(date+"大乐透开奖");
